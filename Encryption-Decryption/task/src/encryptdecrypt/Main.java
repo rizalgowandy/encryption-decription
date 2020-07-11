@@ -6,19 +6,38 @@ public class Main {
 	static Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		String action = in.nextLine();
 		String input = in.nextLine();
 		int shift = in.nextInt();
-		for (char i : input.toCharArray()) {
-			if (!Character.isLetter(i)) {
-				System.out.print(i);
-				continue;
-			}
-			int ascii = i + shift;
-			if (ascii > 97 + 26) {
-				ascii = 97 + (ascii % (97 + 26));
-			}
-			char x = (char) (ascii);
-			System.out.print(x);
+		String res = "";
+		switch (action) {
+			case "enc":
+				res = Enc(input, shift);
+				break;
+			case "dec":
+				res = Dec(input, shift);
+				break;
+			default:
+				break;
 		}
+		System.out.println(res);
+	}
+
+	public static String Enc(String input, int shift) {
+		StringBuilder res = new StringBuilder();
+		char[] orig = input.toCharArray();
+		for (int i = 0; i < input.length(); i++) {
+			res.append((char) (orig[i] + shift));
+		}
+		return res.toString();
+	}
+
+	public static String Dec(String input, int shift) {
+		StringBuilder res = new StringBuilder();
+		char[] orig = input.toCharArray();
+		for (int i = 0; i < input.length(); i++) {
+			res.append((char) (orig[i] - shift));
+		}
+		return res.toString();
 	}
 }
