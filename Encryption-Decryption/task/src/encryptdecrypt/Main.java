@@ -1,14 +1,21 @@
 package encryptdecrypt;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 	static Scanner in = new Scanner(System.in);
+	static HashMap<String, String> param = new HashMap<>();
 
 	public static void main(String[] args) {
-		String action = in.nextLine();
-		String input = in.nextLine();
-		int shift = in.nextInt();
+		for (int i = 0; i < args.length - 1; i++) {
+			if (args[i].charAt(0) == '-') {
+				param.put(args[i], args[i + 1]);
+			}
+		}
+		String action = param.getOrDefault("-mode", "enc");
+		String input = param.getOrDefault("-data", "");
+		int shift = Integer.parseInt(param.getOrDefault("-key", "0"));
 		String res = "";
 		switch (action) {
 			case "enc":
