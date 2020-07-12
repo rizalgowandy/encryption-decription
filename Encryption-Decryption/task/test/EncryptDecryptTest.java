@@ -30,7 +30,6 @@ public class EncryptDecryptTest extends StageTest<String> {
                 )
                 .setAttach("\\jqhtrj%yt%m~ujwxpnqq&")
                 .addFile("in.txt", "Welcome to hyperskill!"),
-
             new TestCase<String>()
                 .addArguments(
                     "-key", "0",
@@ -41,7 +40,6 @@ public class EncryptDecryptTest extends StageTest<String> {
                 )
                 .setAttach("Hello")
                 .addFile("input.txt", "Hello"),
-
             new TestCase<String>()
                 .addArguments(
                     "-key", "1",
@@ -52,7 +50,6 @@ public class EncryptDecryptTest extends StageTest<String> {
                 )
                 .setAttach("123456789")
                 .addFile("i.txt", "012345678"),
-
             new TestCase<String>()
                 .addArguments(
                     "-mode", "dec",
@@ -63,7 +60,6 @@ public class EncryptDecryptTest extends StageTest<String> {
                 )
                 .setAttach("Welcome to hyperskill!")
                 .addFile("input.txt", "\\jqhtrj%yt%m~ujwxpnqq&"),
-
             new TestCase<String>()
                 .addArguments(
                     "-mode", "dec",
@@ -74,7 +70,6 @@ public class EncryptDecryptTest extends StageTest<String> {
                 )
                 .setAttach("Hi")
                 .addFile("input.txt", "Hi"),
-
             new TestCase<String>()
                 .addArguments(
                     "-mode", "dec",

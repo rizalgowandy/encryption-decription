@@ -26,12 +26,22 @@ public class Main {
 		}
 		int shift = Integer.parseInt(param.getOrDefault("-key", "0"));
 		String res = "";
+		String algorithm = param.getOrDefault("-alg", "shift");
+		System.out.println(input);
 		switch (action) {
 			case "enc":
-				res = Enc(input, shift);
+				if (algorithm.equals("shift")) {
+					res = EncShift(input, shift);
+				} else {
+					res = Enc(input, shift);
+				}
 				break;
 			case "dec":
-				res = Dec(input, shift);
+				if (algorithm.equals("shift")) {
+					res = DecShift(input, shift);
+				} else {
+					res = Dec(input, shift);
+				}
 				break;
 			default:
 				break;
@@ -59,6 +69,40 @@ public class Main {
 		char[] orig = input.toCharArray();
 		for (int i = 0; i < input.length(); i++) {
 			res.append((char) (orig[i] - shift));
+		}
+		return res.toString();
+	}
+
+	public static String EncShift(String input, int shift) {
+		StringBuilder res = new StringBuilder();
+		char[] orig = input.toCharArray();
+		for (int i = 0; i < input.length(); i++) {
+			if (!Character.isLetter(orig[i])) {
+				res.append(orig[i]);
+				continue;
+			}
+			int ascii = (orig[i] + shift);
+			if (ascii > 97 + 26) {
+				ascii = 97 + (ascii % (97 + 26));
+			}
+			res.append((char) ascii);
+		}
+		return res.toString();
+	}
+
+	public static String DecShift(String input, int shift) {
+		StringBuilder res = new StringBuilder();
+		char[] orig = input.toCharArray();
+		for (int i = 0; i < input.length(); i++) {
+			if (!Character.isLetter(orig[i])) {
+				res.append(orig[i]);
+				continue;
+			}
+			int ascii = (orig[i] - shift);
+			if (ascii < 97) {
+				ascii = 97 + 26 - (97 - ascii);
+			}
+			res.append((char) ascii);
 		}
 		return res.toString();
 	}
