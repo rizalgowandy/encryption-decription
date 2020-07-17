@@ -18,3 +18,6 @@ content:
 - Book
 - Getting the fullname
 - Avoid division by zero
+- String to double conversion
+- Catching some exceptions
+- Converting and multiplying
