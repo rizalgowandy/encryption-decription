@@ -190,6 +190,9 @@ files:
 - name: src/day23/Solution.java
   visible: true
   learner_created: true
+- name: src/day24/Solution.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/46/stages/250/implement
 status: Solved
 feedback:
